@@ -1,0 +1,11 @@
+动态规划专题
+【动态规划1】动态规划的引入	
+https://www.luogu.com.cn/training/211
+【动态规划2】线性状态动态规划	
+https://www.luogu.com.cn/training/212
+【动态规划3】区间与环形动态规划	
+https://www.luogu.com.cn/training/213
+【动态规划4】树与图上的动态规划	
+https://www.luogu.com.cn/training/214
+【动态规划5】状态压缩动态规划
+https://www.luogu.com.cn/training/215
