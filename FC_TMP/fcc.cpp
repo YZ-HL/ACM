@@ -6,9 +6,10 @@ int main(void)
     do{
         printf("Case #%d:\n", ++cnt);
         system("maker.exe");
-        system("POJ1328.exe < data.txt > myout.txt");
-        system("POJ1328-FC.exe < data.txt > stdout.txt");
-    } while (!system("fc myout.txt stdout.txt"));
+        system("my.exe < data.in > my.out");
+        system("std.exe < data.in > std.out");
+    } while (!system("fc std.out my.out"));
+    printf("Case #%d ERROR.Please check it.\n", cnt);
     system("pause");
     return 0;
 }
