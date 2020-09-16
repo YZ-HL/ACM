@@ -5,9 +5,13 @@ int main(void)
 {
     srand(time(NULL));
     freopen("data.in", "w", stdout);
-    int n = randoms(50000, 100000);
-    printf("%d\n", n);
+    int n = randoms(1, 1000), m = randoms(1, 1000);
+    printf("%d %d\n", n, m);
     for (int i = 1; i <= n; i++)
-        printf("%d ", randoms(1, 5));
+    {
+        int n1 = randoms(1, 1000);
+        int n2 = randoms(1, 1000);
+        printf("%d %d\n", min(n1, n2), max(n1, n2));
+    }
     return 0;
 }
