@@ -1,79 +1,96 @@
-#include <bits/stdc++.h>
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
 
-using namespace std;
-
-const int MAXN = 1e5 + 100;
-bool notprime[MAXN]; // å€¼ä¸º false è¡¨ç¤ºç´ æ•°ï¼Œå€¼ä¸º true è¡¨ç¤ºéç´ æ•°
-vector<int> prime;
-
-void init() {
-    memset(notprime, false, sizeof(notprime));
-    notprime[0] = notprime[1] = true;
-    for (int i = 2; i < MAXN; i++)
-        if (!notprime[i]) {
-            prime.push_back(i);
-            if (i > MAXN / i)
-                continue; // é˜²æ­¢åé¢ i*i æº¢å‡º (æˆ–è€… i,j ç”¨ long long)
-            // ç›´æ¥ä» i*i å¼€å§‹å°±å¯ä»¥ï¼Œå°äº i å€çš„å·²ç»ç­›é€‰è¿‡äº†, æ³¨æ„æ˜¯ j += i
-            for (int j = i * i; j < MAXN; j += i)
-                notprime[j] = true;
-        }
+//li
+int dp[11000];
+int num[20]; //±£´æÊıÁ¿ 
+int price[20]; //±£´æ¼Û¸ñ 
+int code[1100];
+int st[10] = {1, 6, 36, 216, 1296,  7776, 46656 };
+int state;//×ÜµÄ×´Ì¬i
+struct node
+{
+  int s; //¸Ã·½°¸µÄ×´Ì¬Öµ
+  int p; //¸Ã·½°¸»°·Ñ
+}plan[110]; 
+int N, M;
+const int inf = 0x3f3f3f3f;
+//Ê®½øÖÆ×ªÎªÁù½øÖÆ 
+bool jugde( int a, int b)
+{
+  for( int i = 0; i < N; i++)
+  {
+     if( (a % 6 + b % 6) > num[i] )
+         return false;
+      a = a / 6;
+      b = b / 6;
+  }     
+  return true;   
 }
 
-int frac(int n) {
-    int sum = 0, flag = 0;
-    for (auto item : prime) {
-        if (n < item) break;
-        while (n % item == 0) {
-            if (item != 2) sum++;
-            else flag = 1;
-            n /= item;
-        }
-    }
-    if (n > 1) sum++;
-    return sum + flag;
+int sum( int x)
+{
+  int sumx = 0;
+  for( int i = 0; i < N; i++)
+  {
+      sumx += (x % 6) * price[i];
+      x = x / 6;     
+  }    
+  return sumx;  
 }
 
-void solve() {
-    init();
-    int _;
-    cin >> _;
-    for (int ts = 0; ts < _; ++ts) {
-        int n;
-        cin >> n;
-        int res = 0;
-        for (int i = 0; i < n; ++i) {
-            int tmp;
-            cin >> tmp;
-            res ^= frac(tmp);
-        }
-        cout << (res ? "W" : "L") << endl;
-    }
-}
-
-signed main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-#ifdef ACM_LOCAL
-    freopen("in.txt", "r", stdin);
-    freopen("out.txt", "w", stdout);
-    signed localTestCount = 1, localReadPos = cin.tellg();
-    char localTryReadChar;
-    do {
-        if (localTestCount > 20)
-            throw runtime_error("Check the stdin!!!");
-        auto startClockForDebug = clock();
-        solve();
-        auto endClockForDebug = clock();
-        cout << "Test " << localTestCount << " successful" << endl;
-        cerr << "Test " << localTestCount++ << " Run Time: "
-             << double(endClockForDebug - startClockForDebug) / CLOCKS_PER_SEC << "s" << endl;
-        cout << "--------------------------------------------------" << endl;
-    } while (localReadPos != cin.tellg() && cin >> localTryReadChar && localTryReadChar != '$' &&
-             cin.putback(localTryReadChar));
-#else
-    solve();
-#endif
-    return 0;
+int main( )
+{
+  int p, k, c, t;
+  while( scanf("%d",&N) != EOF)
+  {
+     state = 0;
+     memset(plan, 0, sizeof(plan));
+     for( int i = 0; i < N; i++)
+     {
+         scanf("%d%d%d",&c, &k, &p);
+         code[c] = i;        
+         num[i] = k;
+         price[i] = p;
+         state += st[i] * k;                
+     }
+     scanf("%d",&M);
+     for( int i = 1; i <= M; i++)
+     {
+         scanf("%d",&t);
+         for( int j = 1; j <= t; j++)
+         {
+           scanf("%d%d",&c,&k);
+           plan[i].s += st[code[c]] * k;      
+         }
+         scanf("%d",&p);
+         plan[i].p = p;      
+     }
+     for( int i = 1; i <= state; i++)
+          dp[i] = inf;
+     dp[0] = 0;
+     for( int j = 1; j <= M; j++)
+     {
+         for( int i = 0; i <= state; i++)
+         {
+           if( i + plan[j].s <= state && jugde(i, plan[j].s))
+           {
+             if( dp[i + plan[j].s] > dp[i] + plan[j].p && dp[i] != inf)
+                 dp[i + plan[j].s] = dp[i] + plan[j].p;    
+             
+           }
+         }
+     }
+     int ans = inf;
+     for( int x = 0; x <= state; x++)
+     {
+        int t = sum(state - x );
+        if( ans > t + dp[x] )
+            ans = t + dp[x];          
+          
+     }
+     printf("%d\n", ans);  
+  }
+  return 0;    
 }

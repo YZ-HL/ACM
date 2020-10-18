@@ -7,9 +7,9 @@ int main(void)
         printf("Case #%d:\n", ++cnt);
         system("maker.exe");
         system("my.exe < data.in > my.out");
-        system("std.exe < data.in > std.out");
-    } while (!system("fc std.out my.out"));
-    printf("Case #%d ERROR.Please check it.\n", cnt);
-    system("pause");
+        //system("std.exe < data.in > std.out");
+        system("type data.in");
+        system("type my.out");
+    } while (!system("pause"));
     return 0;
 }
