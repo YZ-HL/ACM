@@ -7,10 +7,10 @@
 ✔hdu4745，回文序列+区间DP
 ✔hdu2844，多重背包
 【20201018】
-hdu2089 数位DP入门
-hdu3652 数位DP进阶
-hdu1520 树形DP入门
-hdu3001 状压DP入门
-poj2411 铺砖（状压DP）
-poj2096 概率DP
+✔hdu2089 数位DP入门
+✔hdu3652 数位DP进阶
+✔hdu1520 树形DP入门
+✔hdu3001 状压DP入门
+✔poj2411 铺砖（状压DP）
+✔poj2096 概率DP
 poj3071 概率DP
