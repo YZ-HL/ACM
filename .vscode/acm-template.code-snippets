@@ -20,7 +20,6 @@
 			"int main(void)",
 			"{",
 			"    $0",
-			"    system(\"pause\");",
 			"    return 0;",
 			"}",
 			""
