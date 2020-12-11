@@ -6,8 +6,8 @@
 	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
 	// Placeholders with the same ids are connected.
 	// Example:
-	"Print to console": {
-		"prefix": "cpp",
+	"POJ Template": {
+		"prefix": "poj",
 		"body": [
 			"#include <iostream>",
 			"#include <cstdio>",
@@ -24,6 +24,22 @@
 			"}",
 			""
 		],
-		"description": "acm C++ template"
+		"description": "acm C++ template(POJ)"
+	},
+	"HDU Template": {
+		"prefix": "hdu",
+		"body": [
+			"#include <bits/stdc++.h>",
+			"#define maxn 100005",
+			"using namespace std;",
+			"",
+			"int main(void)",
+			"{",
+			"    $0",
+			"    return 0;",
+			"}",
+			""
+		],
+		"description": "acm C++ template(HDU)"
 	}
 }
