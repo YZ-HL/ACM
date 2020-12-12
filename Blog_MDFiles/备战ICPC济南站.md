@@ -32,7 +32,7 @@ UPD：【2020.12.6    队伍银川站复盘】
 
 [2019 ICPC Asia Yinchuan Regional](https://www.jisuanke.com/contest/5527)
 
-（大概勉强摸到$Cu$尾）
+（大概勉强$Cu$尾）
 
 ##### 2019南昌站
 
