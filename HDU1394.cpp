@@ -47,8 +47,8 @@ int main(void)
         for(int i = 1; i <= n; i++)
         {
             scanf("%d", &a[i]); a[i]++;
-            ans += Query(1, a[i], n, tree);
             Update(1, a[i], a[i], 1, tree);
+            ans += Query(1, a[i] + 1, n, tree);
         }
         int minn = ans;
         for(int i = 1; i <= n; i++)
