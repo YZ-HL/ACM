@@ -1,3 +1,5 @@
+//疑似NOJ数据有括号不匹配问题？前一分代码会TLE
+//首次提交时只考虑了xx|xx情况，没有考虑xxx|xxx|xx|x情况
 #include <bits/stdc++.h>
 #define maxn 100005
 using namespace std;
@@ -40,19 +42,6 @@ int main(void)
     cin >> str;
     str = '(' + str + ')';
     len = str.length();
-    for(int i = 0; i <= len - 1; i++)
-    {
-        if(str[i] == '(')
-        {
-            RE tmp = dfs(i);
-            i = tmp.pos;
-            ans += tmp.maxx;
-        }
-        else if(str[i] == 'x')
-        {
-            ans++;
-        }
-    }
-    printf("%d\n", ans);
+    cout << dfs(0).maxx << endl;
     return 0;
 }
