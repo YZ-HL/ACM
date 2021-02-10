@@ -1,9 +1,10 @@
 ---
-title: CF思维题一轮练习
+title: CF思维题练习-1
 date: 2020-12-14 15:42:06
 tags:
 - ACM
-- 思维题
+- CodeForces
+- 思维
 ---
 
 ### 前言

@@ -1,7 +1,10 @@
 ---
 title: 备战ICPC济南站
 date: 2020-11-26 14:03:55
-tags: ACM
+tags: 
+- ACM
+- ICPC
+- Flag
 ---
 
 ### 忧伤的背景
