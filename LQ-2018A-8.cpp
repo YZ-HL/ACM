@@ -43,5 +43,6 @@ int main(void)
         for(int j = 1; j <= n; j++)
             if(board[i][j] == '#' && !used[color[i][j]] && vis[i][j])   used[color[i][j]] = 1, ans++;
     
-    printf("%d\n", ans);
+    printf("%d\n", c - ans);
+    return 0;
 }
