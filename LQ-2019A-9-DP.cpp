@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #define maxn 105
 using namespace std;
-int n, m, k, t[maxn], dp[(1 << 21)];
+int n, m, k, t[maxn], dp[(1 << 22)];
 void print(int x){
     vector<int> v1;
     while(x)    v1.push_back(x % 2), x /= 2;
@@ -29,20 +29,10 @@ int main(void)
     {
         for(int j = 1; j <= n; j++)
         {
-            if((i & t[j]) == t[j])
-            {
-                /*
-                print(i);
-                print(t[j]);
-                print(i - t[j]);
-                system("pause");
-                */
-                dp[i] = min(dp[i], dp[i - t[j]] + 1); 
-            }
+            dp[i | t[j]] = min(dp[i | t[j]], dp[i] + 1);
         }
     }
     printf("%d\n", dp[(1 << m) - 1] > 100 ? -1 : dp[(1 << m) - 1]);
     return 0;
 }
-//dp[前n包(x)][状态]=最少数目
 //O(n*(2^20))
