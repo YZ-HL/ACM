@@ -1,59 +1,43 @@
 #include <bits/stdc++.h>
 #define maxn 100005
+#define maxm 10000005
+#define mod 1000000007
+#define int long long
 using namespace std;
-int n;
-int num, pri[maxn], r[maxn];
+int n, cnt, ans = 1, pri[maxn];
 bool isp[maxn];
+int qpow(int a, int b){
+    if(b == 0)  return 1;
+    int tmp = qpow(a, b / 2);
+    tmp = (tmp * tmp) % mod;
+    if(b & 1)   tmp = (tmp * a) % mod;
+    return tmp;
+}
+int calc(int p, int now){
+    if(p == 2)    return qpow(p, (int)log2(1.0 * now / 3));
+    return qpow(p, (int)(log2(1.0 * now / 2) / log2(p)));
+}
 void euler(int lim){
     memset(isp, true, sizeof(isp));
-    isp[0] = isp[1] = false;
+    isp[1] = false;
     for(int i = 2; i <= lim; i++)
     {
-        if(isp[i])    pri[++num] = i;
-        for(int j = 1; j <= num && i * pri[j] <= lim; j++)
+        if(isp[i])    
+        {
+            pri[++cnt] = i;
+            ans = (ans * calc(i, n)) % mod;
+        }
+        for(int j = 1; j <= cnt && i * pri[j] <= lim; j++)
         {
             isp[i * pri[j]] = false;
-            if(i % pri[j] == 0)
-            {
-                break;
-            }
+            if(i % pri[j] == 0)    break;
         }
     }
 }
-int calc(int bas, int p){
-    if(p == 0)  return 1;
-    int res = 1;
-    for(int i = 1; i <= p; i++)
-        res *= bas;
-    return res;
-}
-int main(void)
+signed main(void)
 {
-
-    int lim = 25;
-    euler(lim);
-    
-    for(int i = 1; i <= num; i++)
-        for(int j = 0; calc(pri[i], j) <= lim; j++)
-            r[calc(pri[i], j)] = 1;
-    
-    int lcm = -1;
-    for(int i = 1; i <= lim; i++)
-        if(!r[i])
-        {
-            if(lcm == -1)    lcm = i;
-            else           
-            {
-                lcm = lcm * i / __gcd(lcm, i);
-            }
-        }            
-    printf("%d\n", lcm);  
+    scanf("%lld", &n);
+    euler(n);
+    printf("%lld\n", ans);
     return 0;
 }
-/* < 5   empty
- * 6~10  6
- * 11    30
- * 12~13 60
- * 14~17 420
- * 18    1260
- */ 
