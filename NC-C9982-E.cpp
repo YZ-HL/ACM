@@ -77,6 +77,8 @@ signed main(void)
         int pos = 0;
         for(int j = 0; j < v1[i].size(); j++)
         {
+            //本处语句的等于号非常重要，去掉的结果间下图
+            //https://raw.githubusercontent.com/YZ-HL/yz-hl.github.io/master/img/seq_hack.png
             while(pos < v1[i + 1].size() && p[v1[i + 1][pos]].r <= p[v1[i][j]].l)    pos++;
             while(pos < v1[i + 1].size() && max(p[v1[i + 1][pos]].l, p[v1[i][j]].l) < min(p[v1[i + 1][pos]].r, p[v1[i][j]].r))
             {
