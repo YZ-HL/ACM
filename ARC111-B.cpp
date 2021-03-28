@@ -1,68 +1,49 @@
 #include <bits/stdc++.h>
-#define maxn 1000005
+#define maxn 800005
+#define int long long
 using namespace std;
-map<int, int> mp1, mp2;
-int n, a[maxn], b[maxn], vis1[maxn], vis2[maxn], cnt1, cnt2;
-int main(void)
+int n, a, b, uset[maxn], flag[maxn], vis[maxn];
+map<int, int> mp;
+int find(int x){
+    return x == uset[x] ? x : uset[x] = find(uset[x]);
+}
+void unioon(int x, int y){
+    int fx = find(x);
+    int fy = find(y);
+    if(fx == fy)    
+    {
+        flag[fx] = 1;
+        return;
+    }
+    uset[fx] = fy;
+    flag[fx] = flag[fy] = (flag[fx] | flag[fy]);
+}
+signed main(void)
 {
-    scanf("%d", &n);
+    //freopen("1_009.txt", "r", stdin);
+    scanf("%lld", &n);
+    for(int i = 1; i <= maxn - 5; i++)    uset[i] = i;
     for(int i = 1; i <= n; i++)
     {
-        scanf("%d%d", &a[i], &b[i]);
-        if(!vis1[a[i]])
-        {
-            vis1[a[i]] = 1;
-            cnt1++;
-        }
-        mp1[a[i]]++;
-        if(!vis2[b[i]])
-        {
-            vis2[b[i]] = 1;
-            cnt2++;
-        }
-        mp2[b[i]]++;
-    }
-    /*cout << cnt1 << " " << cnt2 << endl;
-    system("pause");*/
-    /*for(int i = 1; i <= n; i++)
+        scanf("%lld %lld", &a, &b);
+        unioon(a, b);
+        vis[a] = vis[b] = 1;
+    }  
+    for(int i = 1; i <= maxn - 5; i++)
     {
-        cout << vis2[b[i]] << " " << mp2[b[i]] << endl;
-        system("pause");
-    }*/
-    if(cnt1 >= cnt2)
-    {
-        for(int i = 1; i <= n; i++)
+        if(vis[i])
         {
-            if(!vis1[b[i]] && mp1[a[i]] > 1)
-            {
-                /*cout << a[i] << " " << b[i] << endl;
-                system("pause");*/
-                cnt1++;
-                vis1[b[i]] = 1;
-                mp1[a[i]]--;
-                mp1[b[i]]++;
-                if(mp1[a[i]] == 0)
-                    vis1[a[i]] = 0;
-            }
+            mp[find(i)]++;
         }
-        printf("%d\n", cnt1);
     }
-    else
+    int ans = 0;
+    for(map<int, int>::iterator iter = mp.begin(); iter != mp.end(); iter++)
     {
-        for(int i = 1; i <= n; i++)
-        {
-            if(!vis2[a[i]] && mp2[b[i]] > 1)
-            {
-                cnt2++;
-                vis2[a[i]] = 1;
-                mp2[a[i]]++;
-                mp2[b[i]]--;
-                if(mp2[b[i]] == 0)
-                    vis2[b[i]] = 0;
-            }
-        }
-        printf("%d\n", cnt2);
+        if(flag[(*iter).first])
+            ans += (*iter).second;
+        else
+            ans += (*iter).second - 1;
     }
-    
+    printf("%lld\n", ans);
     return 0;
 }
