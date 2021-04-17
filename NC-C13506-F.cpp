@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define maxn 100005
+#define int long long
 using namespace std;
 int n, m, k;
 struct Point{
@@ -11,46 +11,49 @@ struct Point{
     }
 };
 Point dfs(int k, int m){
-    if(k == 2)
+    //printf("%d %d\n", k, m);
+    //system("pause");
+    if(k == 1)
     {
         if(m == 1)    return Point(1, 1);
         if(m == 2)    return Point(1, 2);
         if(m == 3)    return Point(2, 2);
-        if(m == 0)    return Point(2, 1);
+        if(m == 4)    return Point(2, 1);
     }
-    Point now = dfs(k - 1, m % (1 << (k - 1)));
-    int part = m % (1 << (k + 1)), bas = (1 << (k - 1));
-    //part4
-    if(part == 0)
-    {
-
-    }
+    int bas = (1 << (k - 1));
+    int part = (m + bas * bas - 1) / (bas * bas);
+    Point now = dfs(k - 1, m - (part - 1) * bas * bas);
     //part 1
-    else if(part <= bas)
+    if(part == 1)
     {
         swap(now.x, now.y);
     }
     //part 2
-    else if(part <= 2 * bas)
+    else if(part == 2)
     {
         now.y += bas;
     }
     //part 3
-    else if(part <= 3 * bas)
+    else if(part == 3)
     {
         now.x += bas;
         now.y += bas;
     }
-    //also part 4
+    //part 4
     else
     {
-        
+        swap(now.x, now.y);
+        now.x = bas * 2 - now.x + 1;
+        now.y = bas - now.y + 1;
     }
+    //printf("%d %d %d\n", k, now.x, now.y);
+    return now;
 }
-int main(void)
+signed main(void)
 {
-    scanf("%d %d", &n, &m);
+    scanf("%lld %lld", &n, &m);
     k = log2(n);
     Point res = dfs(k, m);
+    printf("%lld %lld\n", res.x, res.y);
     return 0;
 }
