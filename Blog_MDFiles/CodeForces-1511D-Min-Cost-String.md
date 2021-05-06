@@ -4,6 +4,8 @@ date: 2021-05-02 18:20:02
 tags:
 - ACM
 - CodeForces
+- 构造
+- 欧拉路
 ---
 
 
@@ -124,7 +126,7 @@ int main()
 
 **Solution (Neon)**
 
-```
+```c++
 #include <bits/stdc++.h>
 
 using namespace std;
