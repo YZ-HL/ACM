@@ -23,7 +23,6 @@ signed main(void)
     {
         for(int j = m; j >= 0; j--)
         {
-            //key
             if(!dp[j])    continue;
             int val = j;
             for(int k = 1; k <= o[i].cnt; k++)
@@ -31,7 +30,8 @@ signed main(void)
                 val = (o[i].t == 1 ? val + Ceil(o[i].val) : Ceil(val * o[i].val));
                 if(val > m)    break;
                 dp[val] |= dp[j];
-                if(dp[val] && !ans[val])    ans[val] = i;
+                //key
+                if(!ans[val])               ans[val] = i;
                 else                        break;
                 //printf("debug: %lld %lld %lld %lld\n", i, j, k, val);
             }

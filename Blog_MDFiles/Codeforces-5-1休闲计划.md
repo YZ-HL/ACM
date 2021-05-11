@@ -20,30 +20,9 @@ tags:
 
 
 
-### 复健
-
-- https://codeforces.com/problemset/problem/1511/D
-- https://codeforces.com/problemset/problem/1512/E
-- https://codeforces.com/problemset/problem/1512/G 
-- https://codeforces.com/problemset/problem/1513/C 
-- https://codeforces.com/problemset/problem/1514/C 
-- https://codeforces.com/problemset/problem/1516/B 
-- https://codeforces.com/problemset/problem/1498/D 
-- https://codeforces.com/problemset/problem/1498/C 
-- https://codeforces.com/problemset/problem/1516/C 
-- https://codeforces.com/problemset/problem/1519/D
-
-
-
-本阶段题目以快速刷完为佳，还需要准备区域赛真题再复盘...
-
-不然也确实还会再打铁。
-
-我的修为差的太远（
-
-
-
 ### 记录
+
+用区间筛选筛了一些复健题，中间夹了个难一点的...
 
 | 题目                                                         | 思路                 | 题解链接                                                     |
 | ------------------------------------------------------------ | -------------------- | ------------------------------------------------------------ |
@@ -52,3 +31,25 @@ tags:
 | [1512G - Short Task](https://codeforces.com/problemset/problem/1512/G) | 数论，欧拉筛         | [CodeForces 1512G - Short Task](https://oi-liu.com/2021/05/03/CodeForces-1512G-Short-Task/) |
 | [1513C - Add One](https://codeforces.com/problemset/problem/1513/C) | 动态规划             | [CodeForces 1513C - Add One](https://oi-liu.com/2021/05/04/CodeForces-1513C-Add-One/) |
 | [1514C - Product 1 Modulo N](https://codeforces.com/problemset/problem/1514/C) | 数论，裴蜀定理，同余 | [CodeForces 1514C - Product 1 Modulo N](https://oi-liu.com/2021/05/05/1514C-Product-1-Modulo-N/) |
+| [1516B - AGAGA XOOORRR](https://codeforces.com/problemset/problem/1516/B) | 思维                 | [CodeForces 1516B - AGAGA XOOORRR](https://oi-liu.com/2021/05/06/CodeForces-1516B-AGAGA-XOOORRR/) |
+| [* 1498D - Bananas in a Microwave](https://codeforces.com/problemset/problem/1498/D ) | 思维，动态规划       | [CodeForces 1498D - Bananas in a Microwave](https://oi-liu.com/2021/05/10/CodeForces-1498D-Bananas-in-a-Microwave/) |
+| [1498C - Planar Reflections](https://codeforces.com/problemset/problem/1498/C) | 动态规划             | [CodeForces 1498C - Planar Reflections](https://oi-liu.com/2021/05/08/CodeForces-1498C-Planar-Reflections/) |
+| [1516C - Baby Ehab Partitions Again](https://codeforces.com/problemset/problem/1516/C ) | 构造，动态规划，思维 | [CodeForces 1516C - Baby Ehab Partitions Again](https://oi-liu.com/2021/05/09/CodeForces-1516C-Baby-Ehab-Partitions-Again/) |
+| [1519D - Maximum Sum of Products](https://codeforces.com/problemset/problem/1519/D) | 动态规划             | [CodeForces 1519D - Maximum Sum of Products](https://oi-liu.com/2021/05/10/CodeForces-1519D-Maximum-Sum-of-Products/) |
+
+
+
+### End
+
+$2021.5.10$完成一轮复健。
+
+还是很多题不会写。
+
+这里面的$1516C,1498D$都很漂亮！希望以后能够不看题解做出来！
+
+大概就是这样子。
+
+五一复健变成了每日一题$hhh$。
+
+银川加油。
+
