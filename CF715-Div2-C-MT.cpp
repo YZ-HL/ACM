@@ -23,7 +23,7 @@ signed main(void)
             }
             sum += maxx - minn;
         }
-        //printf("debug2: %lld %lld\n", ans_minn, sum);
+        //printf("/debug2: %lld %lld\n", ans_minn, sum);
         ans_minn = min(ans_minn, sum);
     }while(next_permutation(s + 1, s + n + 1));
     sort(s + 1, s + n + 1);

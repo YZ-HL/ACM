@@ -1,9 +1,10 @@
 #include <bits/stdc++.h>
-#define maxn 100005
+#define maxn 500005
 #define int long long
 using namespace std;
 int n, m, s[maxn], now[maxn];
-int ans = (1 << 30);
+const int INF = (1LL << 60);
+int ans = INF;
 void show(){
     printf("show debug:\n");
     for(int i = 1; i <= n; i++)
@@ -15,12 +16,14 @@ signed main(void)
     for(int i = 1; i <= n; i++)
         scanf("%lld", &s[i]);
     sort(s + 1, s + n + 1);
-    while(m != n)
+    while(m <= n)
     {
-        for(int i = 1; i <= n; i++)
-            now[i] = s[(i + m) % n == 0 ? n : (i + m) % n];
-        show();
-        int maxx = -(1 << 30), minn = (1 << 30), sum = 0;
+        for(int i = n; i >= n - m + 1; i--)
+            now[i] = s[n - i + 1];
+        for(int i = 1; i <= n - m; i++)
+            now[i] = s[i + m];
+        //show();
+        int maxx = -INF, minn = INF, sum = 0;
         for(int i = 1; i <= n; i++)
         {
             maxx = max(maxx, now[i]);
