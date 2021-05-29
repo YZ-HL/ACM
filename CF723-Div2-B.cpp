@@ -1,24 +1,25 @@
 #include <bits/stdc++.h>
-#define maxn 100005
+#define maxn 2005
 #define int long long
 using namespace std;
-const int d[] = {11, 111, 1111, 11111, 111111, 1111111,
-                   11111111, 111111111, 1111111111, 11111111111};
-int t, n;
+int t, n, dp[maxn];
 signed main(void)
 {
     scanf("%lld", &t);
     while(t--)
     {
         scanf("%lld", &n);
-        int cnt = 0, pos = 9, r = n;
-        while(d[pos] > r)    pos--;
-        while(r > 0 && pos >= 0)
+        if(n > 11 * 111)
         {
-            while(r >= d[pos])    r -= d[pos] * (r / d[pos]);
-            pos--;
+            printf("YES\n");
+            continue;
         }
-        printf(r == 0 ? "YES\n" : "NO\n");
+        memset(dp, 0, sizeof(dp));    dp[0] = 1;
+        for(int i = 0; i <= 1500; i++)
+            if(i - 11 >= 0)    dp[i] |= dp[i - 11];
+        for(int i = 0; i <= 1500; i++)
+            if(i - 111 >= 0)   dp[i] |= dp[i - 111];
+        printf(dp[n] ? "YES\n" : "NO\n");        
     }
     return 0;
 }
