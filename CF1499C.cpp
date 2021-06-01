@@ -5,29 +5,45 @@
 #define IO ios::sync_with_stdio(false);cin.tie(nullptr);cout.tie(nullptr)
 
 #include <bits/stdc++.h>
-#define maxn 100005
+#define maxn 800005
+#define int long long
 using namespace std;
 
-int t, n, c[maxn];
-int main(void)
+int t, n, c[maxn], sum[maxn], mino[maxn], mine[maxn];
+signed main(void)
 {
-    scanf("%d", &t);
+    scanf("%lld", &t);
+    mine[0] = 1e17;
     while(t--)
     {
-        scanf("%d", &n);
+        scanf("%lld", &n);
         for(int i = 1; i <= n; i++)
-            scanf("%d", &c[i]);
-        sort(c + 1, c + n + 1, greater<int>());
-        int nx = 0, ny = 0, flag = 0, cost = 0;
-        for(int i = 1; i <= n - 2; i++)
         {
-            nx += flag; ny += flag ^ 1;
-            flag ^= 1;
-            cost += c[i];
+            scanf("%lld", &c[i]);
+            sum[i] = sum[i - 1] + c[i];
+            i & 1 ? mino[i] = (i == 1 ? c[i] : min(c[i], mino[i - 2])) : mine[i] = min(c[i], mine[i - 2]);
         }
-        cost += min(c[n - 1] * (n - ny) + c[n] * (n - nx),
-                    c[n - 1] * (n - nx) + c[n] * (n - ny));
-        printf("%d\n", cost);
+        int ans = 1e17, nowcost;
+        for(int i = 2; i <= n; i++)
+        {
+            if(i & 1)
+            {
+                int ost = ((i - 2) + 1) / 2;
+                nowcost = mino[i] * (n - ost) + mine[i - 1] * (n - ost + 1);
+                nowcost += sum[i] - mino[i] - mine[i - 1];
+                ans = min(ans, nowcost);
+                //printf("debug2: %lld %lld %lld %lld %lld\n", mino[i] * (n - ost) + mine[i - 1] * (n - ost + 1), mine[i - 1], mino[i], sum[i], nowcost);
+            }
+            else
+            {
+                int ost = (i - 2) / 2;
+                nowcost = mino[i - 1] * (n - ost) + mine[i] * (n - ost);
+                nowcost += sum[i] - mino[i - 1] - mine[i];
+                ans = min(ans, nowcost); 
+                //printf("debug1: %lld %lld %lld %lld\n", mino[i - 1], mine[i], sum[i], nowcost);
+            }
+        }
+        printf("%lld\n", ans);
     }
     return 0;
 }
