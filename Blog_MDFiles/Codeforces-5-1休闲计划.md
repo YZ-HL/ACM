@@ -30,7 +30,7 @@ tags:
 | [1512E - Permutation by Sum](https://codeforces.com/problemset/problem/1512/E) | 构造，动态规划       | [CodeForces 1512E - Permutation by Sum](https://oi-liu.com/2021/05/03/CodeForces-1512E-Permutation-by-Sum/) |
 | [1512G - Short Task](https://codeforces.com/problemset/problem/1512/G) | 数论，欧拉筛         | [CodeForces 1512G - Short Task](https://oi-liu.com/2021/05/03/CodeForces-1512G-Short-Task/) |
 | [1513C - Add One](https://codeforces.com/problemset/problem/1513/C) | 动态规划             | [CodeForces 1513C - Add One](https://oi-liu.com/2021/05/04/CodeForces-1513C-Add-One/) |
-| [1514C - Product 1 Modulo N](https://codeforces.com/problemset/problem/1514/C) | 数论，裴蜀定理，同余 | [CodeForces 1514C - Product 1 Modulo N](https://oi-liu.com/2021/05/05/1514C-Product-1-Modulo-N/) |
+| [1514C - Product 1 Modulo N](https://codeforces.com/problemset/problem/1514/C) | 数论，裴蜀定理，同余 | [CodeForces 1514C - Product 1 Modulo N](https://oi-liu.com/2021/05/05/CodeForces-1514C-Product-1-Modulo-N/) |
 | [1516B - AGAGA XOOORRR](https://codeforces.com/problemset/problem/1516/B) | 思维                 | [CodeForces 1516B - AGAGA XOOORRR](https://oi-liu.com/2021/05/06/CodeForces-1516B-AGAGA-XOOORRR/) |
 | [* 1498D - Bananas in a Microwave](https://codeforces.com/problemset/problem/1498/D ) | 思维，动态规划       | [CodeForces 1498D - Bananas in a Microwave](https://oi-liu.com/2021/05/10/CodeForces-1498D-Bananas-in-a-Microwave/) |
 | [1498C - Planar Reflections](https://codeforces.com/problemset/problem/1498/C) | 动态规划             | [CodeForces 1498C - Planar Reflections](https://oi-liu.com/2021/05/08/CodeForces-1498C-Planar-Reflections/) |

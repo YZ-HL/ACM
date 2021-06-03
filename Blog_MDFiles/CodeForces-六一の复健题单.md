@@ -28,28 +28,33 @@ tags:
 
 - $set$处理一下最小值和最接近$q[i]$的数即可
 
+[✔ 2021.06.01] [Problem - 1499C - Codeforces](https://codeforces.com/problemset/problem/1499/C)
 
+- 奇偶分类讨论，由于独立，分拆$x,y$轴贡献。需要特别注意奇数的情况判别。
 
-【】Problem - 1505B - Codeforces
-https://codeforces.com/problemset/problem/1505/B
+[✔ 2021.06.02] [Problem - 1497C2 - Codeforces](https://codeforces.com/problemset/problem/1497/C2)
 
-【】Problem - 1499C - Codeforces
-https://codeforces.com/problemset/problem/1499/C
+- 构造。除去最后三位，其他全部填$1$，转化为$C1$的简单问题即可。写的时候还分类了$k=n,k=n-1,k=n-2$特殊情况，其实没有必要。
 
-【】Problem - 1497C2 - Codeforces
-https://codeforces.com/problemset/problem/1497/C2
+[✔ 2021.06.02] [Problem - 1492C - Codeforces](https://codeforces.com/problemset/problem/1492/C)
 
-【】Problem - 1492C - Codeforces
-https://codeforces.com/problemset/problem/1492/C
+- 贪心，思路是先找合法值，再在里面挑选出最优值。维护某一合法值的最小下标和最大下标即可。
 
-【】Problem - 1490F - Codeforces
-https://codeforces.com/problemset/problem/1490/F
+  开始的时候$wa7$，后面发现，维护某一合法值的最小下标和最大下标要分别从左往右扫和从右往左扫。
 
-【】Problem - 1487D - Codeforces
-https://codeforces.com/problemset/problem/1487/D
+[✔ 2021.06.02] [Problem - 1490F - Codeforces](https://codeforces.com/problemset/problem/1490/F)
 
-【】Problem - 1487C - Codeforces
-https://codeforces.com/problemset/problem/1487/C
+- 出现次数由小到大排序，优先处理小的情况。由于只存在删除操作，因此，如果最后$C=k$，那么$C<k$的部分都要被删除。因此，删除了$C<k$的问题之后，可以转化成一个与$C=min(appear \ cnt)$相似的问题。
+
+  然后，维护一下即可，我的写法是三个$map$维护，较为麻烦（
+
+[✔ 2021.06.03] [Problem - 1487D - Codeforces](https://codeforces.com/problemset/problem/1487/D)
+
+- 联立两个条件，消去$a^2$，得$c=b+1$。可以得到，$a^2 = 2b + 1$，问题可以转化为，在$\le n$的情况下，有多少个奇数（$>1$）为完全平方数。这个过程可以预处理后用$lower \ bound$求解，时间复杂度为$O(tlogn)$。在本题里，测试数据较小，也可以直接在每次询问时都$\sqrt{n}$暴力求解。
+
+[✔ 2021.06.03] [Problem - 1487C - Codeforces](https://codeforces.com/problemset/problem/1487/C)
+
+- 使用的是[分治+分类讨论的写法](https://oi-liu.com/2021/06/03/CodeForces-1487C-Minimum-Ties/)解决了这个问题=_=，比官方题解复杂多了...
 
 【】Problem - 1486C1 - Codeforces
 https://codeforces.com/problemset/problem/1486/C1
