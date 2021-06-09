@@ -9,87 +9,37 @@
 #define int long long
 using namespace std;
 
-int t, len, ans, lfq[maxn], dis[maxn]; 
+int t, ans, dp[maxn][2];
 string str;
-void inits(){
-    ans = 0;
-    memset(lfq, 0, sizeof(lfq));
-    memset(dis, 0, sizeof(dis));
-
-    int pos = 1;
-    while(pos <= len)
-    {
-        if(str[pos] == '?')
-        {
-            int nowpos = pos;
-            while(str[pos] == '?')
-                lfq[pos] = nowpos, pos++;
-        }
-        else    pos++;
-    }
-}
-int calc(int nowrt){
-    stack<char> s1;
-    int nowpos = nowrt;
-    s1.push(str[nowpos]); 
-    nowpos++;
-    while(nowpos <= len)
-    {
-        if(s1.top() != '?')
-        {
-            if(str[nowpos] == '?')
-                s1.top() == '0' ? s1.push('1') : s1.push('0');
-            else if(str[nowpos] != s1.top())
-                s1.push(str[nowpos]);
-            else
-                break;
-        }
-        else
-        {
-            if(str[nowpos] == '?')
-                s1.push(str[nowpos]);
-            else if(str[nowpos] == '1')
-                s1.pop(), s1.push('0'), s1.push('1');
-            else
-                s1.pop(), s1.push('1'), s1.push('0');
-        }
-        nowpos++;
-    }
-    return nowpos - 1;
-}
 signed main(void)
 {
-    //IO;
     cin >> t;
     while(t--)
     {
+        ans = 0;
         cin >> str;
+        int len = str.length();    
         str = "#" + str;
-        len = str.length() - 1; inits();
-        int now = 0, las = 1;
-        for(int i = 1; i <= len; )
+        for(int i = 1; i <= len; i++)
         {
-            now = calc(las);
-            int seqlen = now - i + 1;
-            if(str[now] == '?')
+            if(str[i] == '?')
             {
-                int ri = i, g = 0;
-                i = max(lfq[now], i + 1);
-                las = now;
-                if(i > len)    break;
-                ans += (i - ri) * (i - ri + 1) / 2;
-                //printf("debug1: ri:%lld i:%lld sq:%lld a:%lld\n", ri, i, seqlen, (i - ri + g) * (i - ri + 1 + g) / 2);
+                dp[i][0] = dp[i - 1][1] + 1;
+                dp[i][1] = dp[i - 1][0] + 1;
+            }
+            else if(str[i] == '0')
+            {
+                dp[i][0] = 0;
+                dp[i][1] = dp[i - 1][0] + 1;
             }
             else
             {
-                i = now + 1;
-                las = i;
-                ans += seqlen * (seqlen - 1) / 2;
-                //printf("debug2: %lld %lld %lld %lld\n", i, now, seqlen, seqlen * (seqlen - 1) / 2);
+                dp[i][0] = dp[i - 1][1] + 1;
+                dp[i][1] = 0;
             }
+            ans += max(dp[i][0], dp[i][1]);
         }
-        int pos = len;
-        printf("%lld\n", ans + len);
+        cout << ans << '\n';    
     }
     return 0;
 }
