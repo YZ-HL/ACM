@@ -56,17 +56,29 @@ tags:
 
 - 使用的是[分治+分类讨论的写法](https://oi-liu.com/2021/06/03/CodeForces-1487C-Minimum-Ties/)解决了这个问题=_=，比官方题解复杂多了...
 
-【】Problem - 1486C1 - Codeforces
-https://codeforces.com/problemset/problem/1486/C1
+[✔ 2021.06.04] [Problem - 1486C1 - Codeforces](https://codeforces.com/problemset/problem/1486/C1)
 
-【】Problem - 1486B - Codeforces
-https://codeforces.com/problemset/problem/1486/B
+- 二分，交互题。关闭流同步啥的$IO$优化在交互题会导致$tle$。开始的时候想的是依据次小值不变去找最大值，实际上还需要再进行一次分类讨论。如$[5,1][1,4]$中，$[5,1]$询问时，次大值不为$[5,1,4]$的次大值。
 
+[✔ 2021.06.04] [Problem - 1486B - Codeforces](https://codeforces.com/problemset/problem/1486/B)
 
+- 送分题。判断一下点数是奇数还是偶数，如果是奇数答案为$1$，如果$n$是偶数，则在对$x,y$数组由小到大分别排序后，答案为$(x[n / 2 + 1] - x[n / 2] + 1) * (y[n / 2 + 1] - y[n / 2] + 1)$。
+
+  本题的关键就是所设置的距离为曼哈顿距离，$x$方向与$y$方向的贡献可以分开考虑，最后利用乘法定理相乘得到总的可能方案数。
 
 ---
 
 
+
+蓝桥国赛，凉了，喜提辣鸡国二（
+
+然后补了一段时间$ddl$，嗯，写三天写完了（
+
+现在开始重拾[2021.06.09]
+
+
+
+---
 
 ## DP,R1700-1800
 
