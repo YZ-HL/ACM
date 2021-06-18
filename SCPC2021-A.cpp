@@ -5,41 +5,20 @@
 #define IO ios::sync_with_stdio(false);cin.tie(nullptr);cout.tie(nullptr)
 
 #include <bits/stdc++.h>
-#define maxn 200005
-#define int long long 
+#define maxn 100005
 using namespace std;
-int n, k, x, p[maxn], s[maxn], t[maxn];
-bool check(int val){
-    int now = 0, ti = 0;
-    for(int i = 0; i <= k; i++)
-    {
-        ti = t[i];
-        int maxx = val * (p[i] - ti);
-        if(now + maxx < x)    continue;
-        if(i != k) 
-            now += val * (t[i + 1] - ti);
-        else
-            now += maxx;
-        //printf("debug: %lld %lld %lld %lld\n", i, now, ti, val);
-    }
-    return now >= x;
-}
-signed main(void)
+int t, k;
+int main(void)
 {
-    scanf("%lld %lld %lld %lld", &n, &k, &x, &p[0]);
-    for(int i = 1; i <= n; i++)
-        scanf("%lld", &s[i]);
-    for(int i = 1; i <= k; i++)
-        scanf("%lld", &t[i]);
-    for(int i = 1; i <= k; i++)
-        scanf("%lld", &p[i]);
-    sort(s + 1, s + n + 1);
-    int lf = 1, rt = n, ans = 0;
-    while(lf <= rt)
+    scanf("%d", &t);
+    while(t--)
     {
-        int mid = (lf + rt) / 2;
-        check(s[mid]) ? ans = n - mid + 1, rt = mid - 1 : lf = mid + 1; 
+        int ans = 0;
+        scanf("%d", &k);
+        for(int i = 1; i <= k - i; i++)
+            if(k - i >= 1 && k - i <= 6)
+                ans++;
+        printf("%d\n", ans);
     }
-    printf("%lld\n", ans);
     return 0;
 }
